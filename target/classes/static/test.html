@@ -8,14 +8,13 @@
 <script language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-cookies.js"></script>
 
 <script language="javascript" src="js/testApp.js"></script>
-<!--<script language="javascript" src="js/controllers/testController.js"></script>-->
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
 </head>
 <body ng-controller="TestController">
     {{message}}
-
+    <input type="text" ng-model="notification">
     <button ng-click="alertTrigger()">Click Me Mo Fo</button>
 </body>
 </html>

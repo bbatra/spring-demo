@@ -1,6 +1,7 @@
 package com.demo.controllers
 
 import com.demo.model.Alert
+import com.demo.model.Entity
 import com.demo.services.AlertService
 import com.google.gson.Gson
 import org.springframework.beans.factory.annotation.Autowired
@@ -39,20 +40,23 @@ class AlertController
 
         def temp = [alert]
 
-        println temp.class.name
 
-        println Gson.newInstance().toJson( alert )
-
-        [alert]
-    }
-//    @RequestMapping("/{id}")
-//    def getAlert(@PathVariable("id") String alertId)
-//    {
-//        // this is not returning anything except the println call
+        //alertService.save(alert)
 //
-////        println("ALERTID")
-////        println(alertId)
-//    }
+   //     println Gson.newInstance().toJson( alert )
+        temp.clear()
+        for (Entity e:alertService.getAllAlerts())
+            temp.add((Alert) e)
+
+ //       println Gson.newInstance().toJson( temp )
+        temp
+    }
+    @RequestMapping("/getAlert/{id}")
+    def getAlert(@PathVariable("id") String alertId)
+    {
+        println "This bitch just hit me: " + alertId
+        alertService.getAlertById(alertId)
+    }
 
     @RequestMapping("/hit")
     String sendAlert()
